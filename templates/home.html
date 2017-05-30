@@ -9,14 +9,36 @@
 	<div class="modal-body">
 		<div class="container">
 			<form method=post action="/output/">
-							
-  				<dt><label for="str">Enter a String</label>
+				<h3> Query type 1 :semantic meaning </h3>			
+  				<dt><label for="str">Enter a String</label></br>
   				<dd><input id="str" name="str" type="text" value=""></dd>
-  
- 				<p><input type=submit value=Submit>
+  			
+ 				<p><input type=submit value=Submit style="margin-left:100px">
+			</form>
+	
+			<form method=post action="/output1/">
+				<h3> Query type 2 :cross co-relations </h3>			
+  				<dt><label for="str1">Enter Strings</label></br>
+  				<dd><input id="str2" name="str2" type="text" value=""></dd></br>
+				<dd><input id="str3" name="str3" type="text" value=""></dd></br>
+  				<dd><input id="str4" name="str4" type="text" value=""></dd></br>
+
+ 				<p><input type=submit value=Submit style="margin-left:100px" >
+			</form>
+
+			<form method=post action="/output2/">
+				<h3> Query type 3 : odd one out analysis </h3>			
+  				<dt><label for="str">Enter Strings</label></br>
+  				<dd><input id="str5" name="str5" type="text" value=""></dd></br>
+  				<dd><input id="str6" name="str6" type="text" value=""></dd></br>
+				<dd><input id="str7" name="str7" type="text" value=""></dd></br>
+				<dd><input id="str8" name="str8" type="text" value=""></dd></br>
+
+ 				<p><input type=submit value=Submit style="margin-left:100px">
 			</form>
 					  
 		 </div>
-	</div>		
+	</div>	
+	
 </header>
 </html>	
