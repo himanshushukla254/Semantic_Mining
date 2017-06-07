@@ -26,7 +26,8 @@ def output1():
     input3 = str(request.form['str3']); 
     input4 = str(request.form['str4']);  
     model = word2vec.Word2Vec.load_word2vec_format('static/text.model.bin', binary=True)
-    res1 = model.most_similar((input2,input3),input4,topn=5);
+    #res1 = model.most_similar((input2,input3),input4,topn=5);
+    res1 = model.most_similar(positive=[input2, input3], negative=[input4],topn=5);
     return render_template('output1.html', input1=res1)
 
 @app.route('/output2/' , methods=['GET','POST'])
