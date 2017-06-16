@@ -3,7 +3,7 @@ from wtforms import Form
 from gensim.models import word2vec
 import gc
 import os
-
+import sys
 
 app=Flask(__name__)
 
@@ -12,12 +12,15 @@ def hello():
     return render_template('home.html');
 
 
-
 @app.route('/output/' , methods=['GET','POST'])
 def output():
     input1 = str(request.form['str'])
     model = word2vec.Word2Vec.load_word2vec_format('static/text.model.bin', binary=True)
-    res = model.most_similar(input1,topn=5)
+    list = 'String is not in dataset'
+    try:
+	res = model.most_similar(input1,topn=5) 
+    except Exception:
+   	res = list
     return render_template('output.html', input1=res)	
 
 @app.route('/output1/' , methods=['GET','POST'])
@@ -27,7 +30,11 @@ def output1():
     input4 = str(request.form['str4']);  
     model = word2vec.Word2Vec.load_word2vec_format('static/text.model.bin', binary=True)
     #res1 = model.most_similar((input2,input3),input4,topn=5);
-    res1 = model.most_similar(positive=[input2, input3], negative=[input4],topn=5);
+    list = 'No suitable relation found'
+    try:
+    	res1 = model.most_similar(positive=[input2, input3], negative=[input4],topn=5);
+    except Exception:
+   	res1 = list
     return render_template('output1.html', input1=res1)
 
 @app.route('/output2/' , methods=['GET','POST'])
@@ -37,7 +44,11 @@ def output2():
     input7 = str(request.form['str7']);
     input8 = str(request.form['str8']); 
     model = word2vec.Word2Vec.load_word2vec_format('static/text.model.bin', binary=True)
-    res2 = model.doesnt_match((input5,input6,input7,input8));
+    list = 'Entered strings are not suitable for analysis'
+    try:
+    	res2 = model.doesnt_match((input5,input6,input7,input8));
+    except Exception:
+   	res2 = list
     return render_template('output2.html', input1=res2)	
 	
 	
